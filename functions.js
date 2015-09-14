@@ -91,3 +91,26 @@ var newContactsList = contactsWithNums.map(squareNumInObj);
 
 console.log(newContactsList);
 console.log(contactsWithNums);
+
+//_________________________________________________
+// #5
+// Operation Make Function
+
+function operationMaker(str){
+    switch (str) {
+        case 'add':
+            return function add(num1,num2){return num1+num2};
+        case 'sub':
+            return function sub(num1,num2){return num1-num2};
+        case 'mult':
+            return function mult(num1,num2){return num1*num2};
+        case 'div':
+            return function div(num1,num2){return num1/num2};
+        default:
+            return "please use either add, sub, mult, or div";
+    }
+}
+
+console.log(
+    operationMaker("sub")(8,5)    
+)
