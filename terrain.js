@@ -2,10 +2,14 @@
 
 var terrainBoard = [];
 createBoard();
-// outputBoard();
+for(var h = 0; h<999; h++){
+    outputBoard();
+    randomEvent();
+}
 
 function Tile(x,y){
-    var obj = { coordi: x, coordj: y, height: randomIntFromInterval(1,3), type: randomGrassRocksWater(), condition: randomBurningNormalFrozen() };
+    var obj = {};
+    return obj = { coordi: x, coordj: y, height: randomIntFromInterval(1,3), type: randomGrassRocksWater(), condition: randomBurningNormalFrozen() };
 }
 
 function randomIntFromInterval(min,max){
@@ -26,7 +30,7 @@ function randomBurningNormalFrozen(){
     if(select === 3) return "frozen";
 }
 
-function freeze(){
+function freeze(obj){
     if(this.condition === "burning"){
         this.condition = "normal";
     }else if(this.condition === "normal"){
@@ -36,7 +40,7 @@ function freeze(){
     }
 }
 
-function burn(){
+function burn(obj){
     if(this.condition === "frozen"){
         this.condition = "normal";
     }else if(this.condition === "normal"){
@@ -56,12 +60,28 @@ function createBoard(){
 }
 
 function outputBoard(){
+    console.log (" ");
     var row = "";
-    var col = "";
-    for(var i = 0; i < 20; i++){
-        console.log(terrainBoard.height)
-        for(var j = 0; j < 20; j++){
-            console.log(terrainBoard.height)
+    for(var j = 0; j < 20; j++){
+        for(var i = 0; i < 20; i++){
+            row += terrainBoard[i][j].height + " ";
         }
+        console.log(row);
+        row = "";
+    }  
+    console.log (" ");
+}
+
+function randomEvent(){
+    var event = randomIntFromInterval(1,2);
+    if(event === 1){
+        var i = randomIntFromInterval(0,19);
+        var j = randomIntFromInterval(0,19);
+        freeze.apply( terrainBoard[i][j] );
+    }
+     if(event === 2){
+        var i = randomIntFromInterval(0,19);
+        var j = randomIntFromInterval(0,19);
+        burn.apply( terrainBoard[i][j] );
     }  
 }
