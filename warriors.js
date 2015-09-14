@@ -5,6 +5,10 @@ function fight() {
     console.log(this.name + " rushes into the arena with a " + this.weapon);
 }
 
+function randomIntFromInterval(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
 function faceoff(opponent){
     if(this.power > opponent.power){
         if(this.gender === "M"){
@@ -15,7 +19,7 @@ function faceoff(opponent){
     } else if(this.power < opponent.power){
         return opponent.name + " has stuck down " + this.name + " with a powerful blow";
     } else {
-        return this.name + " and " + opponent.name + " are deadlocked in strenght and neither can overcome the other!"
+        return this.name + " and " + opponent.name + " are deadlocked in strenght and neither can overcome the other!";
     }
 }
 
@@ -26,33 +30,44 @@ function makeWarrior(name,gender) {
         gender: gender,
         level: 1,
         weapon: "wooden sword",
-        power: Math.floor(Math.random()*(100-1+1)+1),
+        power: randomIntFromInterval(1,100),
         fight: fight,
         faceoff: faceoff,
-        isDefeated: "no"
+        isDefeated: "no",
+        hasFoughtInCurrentRound: "no"
         
-    }
+    };
+}
+var warriors = [
+    makeWarrior("Mikaila","F"),
+    makeWarrior("Hamiltoniun","M"),
+    makeWarrior("Jordainof","M"),
+    makeWarrior("Helena","F"),
+    makeWarrior("Ulaizio","M"),
+    makeWarrior("Avivorgoff","M"),
+    makeWarrior("Natalia","F"),
+    makeWarrior("Kaylum","M"),
+    makeWarrior("Cyprianna","F"),
+    makeWarrior("Normang","M"),
+    makeWarrior("Dzjihadhalia","F"),
+    makeWarrior("Christanoff","M"),
+    makeWarrior("Loga","F"),
+    makeWarrior("Mathiild","F"),
+    makeWarrior("Durk","M"),
+    makeWarrior("Beatrixx","F"),
+];
+
+
+
+//randomly select two fighters
+function chooseTwoWarriors(){
+    var war1 = warriors[randomIntFromInterval(0,15)]
+        
+    var war2;
 }
 
-makeWarrior("Mikaila","F");
-makeWarrior("Hamiltoniun","M");
-makeWarrior("Jordainof","M");
-makeWarrior("Helena","F");
-makeWarrior("Ulaizio","M");
-makeWarrior("Avivorgoff","M");
-makeWarrior("Natalia","F");
-makeWarrior("Kaylum","M");
-makeWarrior("Cyprianna","F");
-makeWarrior("Normang","M");
-makeWarrior("Dzjihadhalia","F");
-makeWarrior("Christanoff","M");
-makeWarrior("Loga","F");
-makeWarrior("Mathiild","F");
-makeWarrior("Durk","M");
-makeWarrior("Beatrixx","F");
 
-
-var count = 14;
+var count = 16;
 while (count != 1){
     
 }
