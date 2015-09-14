@@ -56,3 +56,15 @@ var sortedByEmailAlphabetically = contacts.sort(function(a, b){
 });
 
 console.log(sortedByEmailAlphabetically);
+
+
+// #3
+// Map an array giving the squares of the original.
+
+var arrayToSquare = [3,5,7,11,2,1,9,22];
+
+var squaredArray = arrayToSquare.map(function (x) {
+        return Math.pow(x, 2);
+  });
+  
+console.log(squaredArray);
